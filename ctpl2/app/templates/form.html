@@ -1,0 +1,28 @@
+{% extends 'base.html'%}
+{% load static %}
+{%load crispy_forms_tags %}
+
+
+
+{% block content %}
+
+<div class='alert alert-info display-7 font-weight-bold text-uppercase mt-0 col-8  text-center mx-auto'>{{name}}</div>
+<div class='container container-body col-8 shadow mt-4  ml-1 border border-info mb-4 pt-2 pb-2 mx-auto'>
+
+    <form method="POST" enctype='multipart/form-data'>
+
+        {% csrf_token %}
+        <table cellpading="10" cellspacing="10">
+
+            {{form.as_table}}
+            <tr>
+                <td><input class='btn btn-primary' type="submit" value="Save"></td>
+                <td><input class='btn btn-danger' type="reset" value="Reset"></td>
+            </tr>
+        </table>
+
+
+    </form>
+</div>
+<!-- </div> -->
+{% endblock%}

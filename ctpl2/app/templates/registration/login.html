@@ -1,0 +1,17 @@
+{% extends 'base.html'%}
+{% load crispy_forms_tags %}
+{%  block login %}
+
+<form method="POST">
+    {% csrf_token %}
+    <div class='container'>
+        <div class='card col-5 mt-5 card-body mx-auto'>
+            <div class='alert alert-primary text-center display-5 text-uppercase'>Login</div>
+            <table>
+
+                {{form|crispy}}
+
+            </table>
+            <input class='btn btn-primary btn-xm mt-2' type="submit" name="" value='Login'>
+</form>
+{% endblock%}

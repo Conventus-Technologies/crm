@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% block search %}
+<form class="d-flex" method='get' action='/searchproduct/'>
+    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="Query1" id="Query1">
+    <button class="btn btn-outline-light" type="submit">Search</button>
+</form>
+{% endblock %}
+{% block content %}
+<h1 class='col-lg-6 mx-auto  text-info mt-3 text-uppercase'>Product List</h1>
+<div class="card-body">
+    <div class="table-responsive">
+        <table class="table table-hover table-bordered mx-auto" id="dataTable" width="100%" cellspacing="0">
+            <tr>
+                <th>SR NO.</th>
+                
+                <th>Customer Name
+                </br></br>
+                <form class="d-flex" method='get' action='/Coustmersearch/'>
+                <input type='search' placeholder='Customer Name...' name='query'>
+                </form>
+                </th>
+                <th>Contact Number</th>
+                <th>Customer Location</th>
+                <th>Product Part Number</th>
+                <th>Serial Pak Number
+                     </br></br>
+                    <form class="d-flex" method='get' action='/productsearch/'>
+                    <input type='search' placeholder='Serial Number...' name='query'>
+                    </form></th>
+                <th>Refrence Service Part Number</th>
+                <th>PO Number</th>
+                <th>SO Number</th>
+                <th>COP Number</th>
+                <th>Contact Number</th>
+                <th>Quote Number</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Remark</th>
+                <th>AMC</th>
+                <th>Licence Part ID</th>
+                <th>Licence Order No</th>
+                <th>Licence SO</th>
+                <th>Licence PAK</th>
+                <th>Licence Description</th>
+                <th>Licence Quantity</th>
+                <th>Licence Start Date</th>
+                <th>Licence End Date</th>
+                <th>Licence Remark</th>
+                <th colspan="2">
+                    <center>Action</center>
+                </th>
+            </tr>
+
+            {% for i in q1 %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+              
+                <td>{{i.Customer_Name}}</td>
+                <td>{{i.Contact_Number}}</td>
+                <td>{{i.Customer_Location}}</td>
+                <td>{{i.Product_Part_Number}}</td>
+                <td>{{i.Serial_Pak_Number}}</td>
+                  
+                <td>{{i.Refrence_Service_Part_Number}}</td>
+                <td>{{i.PO_Number}}</td>
+                <td>{{i.SO_Number}}</td>
+                <td>{{i.COP_Number}}</td>
+                <td>{{i.Contract_Number}}</td>
+                <td>{{i.Quote_Number}}</td>
+                <td>{{i.Start_Date}}</td>
+                <td>{{i.End_Date}}</td>
+                <td>{{i.Remark}}</td>
+                <td>{{i.AMC}}</td>
+                <td>{{i.License_PartID}}</td>
+                <td>{{i.License_OrderNo}}</td>
+                <td>{{i.License_SO}}</td>
+                <td>{{i.License_PAK}}</td>
+                <td>{{i.License_Description}}</td>
+                <td>{{i.License_Quantity}}</td>
+                <td>{{i.License_Start_Date}}</td>
+                <td>{{i.License_End_Date}}</td>
+                <td>{{i.License_Remark}}</td>
+                <td><a href="/product-delete/{{i.id}}/">Delete</a></td>
+                <td>
+                    <a href="/update/{{i.id}}/">Edit</a></a>
+                </td>
+            </tr>
+
+            {%endfor%}
+
+        </table>
+    </div>
+</div>
+{% endblock %}

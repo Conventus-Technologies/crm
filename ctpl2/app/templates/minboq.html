@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class='container col-3 border border-info mx-auto'>
+                    <form class="d-flex" method='get' action='/fetchboq/'>
+                    
+  <div class="mb-3  mt-4 mx-auto">
+    <p class='alert alert-info text-center'>Search BOQ</p>
+    <label for="project" class="form-label">Project Name</label>
+    <input type="text" class="form-control" id="project" name='project' placeholder='project...'>
+ 
+</form>
+  
+    <form class="d-flex" method='get' action='/fetchboq2/'>
+                    
+  <div class="mb-3 mt-4">
+    <label for="company" class="form-label">Company Name</label>
+    <input type="text" class="form-control" id="company" name='company' placeholder='company...'>
+  </div><br>
+ 
+</form>
+</div>
+{% endblock %}

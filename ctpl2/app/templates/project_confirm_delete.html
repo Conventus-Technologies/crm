@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<form method="post" action=''>
+	{% csrf_token %}
+<div class='container col-4 border border-info'>
+	<p class='alert alert-info text-center mt-2'>CONFIRM DELETE</p>
+	<h3>ARE YOU SURE TO DELETE</h3>
+	<input type="submit" class='btn btn-danger mb-2' value="Yes">
+	<a href='/projectlist/' class='btn btn-success mb-2'>No</a>
+	</div>
+</form>
+{% endblock %}

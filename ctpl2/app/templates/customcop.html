@@ -1,0 +1,132 @@
+{% extends 'base.html'%}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class='container-fluid'>
+
+<div class='row'>
+	<div class="col-2">
+		<center><h1 class='text-info'>FILTER</h1></center>
+		<form id='filterform' action="/customcop/">
+		
+		<label for='Company'>Company</label>
+		<select onchange='submitform()' class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name='Company' id='Company'>
+  <option 
+   value=''>--Company--</option>
+  {% for i in c %}
+  <option {% if request.GET.Company == i.Company_Name %} selected {% endif %}
+  value="{{i.Company_Name}}">{{i.Company_Name}}</option>
+  {% endfor %}
+</select>
+
+
+
+
+<label for='OEM'>OEM</label>
+  <select onchange='submitform()' class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name='OEM'>
+  <option  value=''>--OEM--</option>
+  {% for i in o%}
+  <option {% if request.GET.OEM == i.OEM_Name %} selected {% endif %} 
+  value="{{i.OEM_Name}}">{{i.OEM_Name}}</option>
+  {% endfor %}
+  </select>
+
+
+
+
+
+<label for='project'>Project</label>
+  <select onchange='submitform()' class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name='project'>
+  <option  value=''>--Project--</option>
+  {% for i in p%}
+  <option {% if request.GET.project == i.Project_Name %} selected {% endif %}
+  value="{{i.Project_Name}}">{{i.Project_Name}}</option>
+  {% endfor %}
+  
+</select>
+<a href="/customcop/?Company=&OEM=&project=" class="btn btn-info btn-sm mb-2">Clear Filter</a>
+</form>
+	</div>
+	<div class='col'>
+		
+		
+
+		<center><h1 class='text-info'>COP LIST</h1></center>
+		<div class="table-responsive">
+        <table class="table table-hover table-bordered mx-auto" id="dataTable">
+
+            <tr>
+                <th>SR NO.</th>
+                <th>COP Name</th>
+                <th>Company Name
+                    
+                </th>
+                <th>Project Name
+                    
+                </th>
+                <th>OEM Name
+                   
+                </th>
+                <th>Date Created</th>
+                <th>Date Modified</th>
+                <th>Remark</th>
+                <th>DOWNLOAD COP</th>
+                <th colspan="2">
+                    <center>Action</center>
+                </th>
+            </tr>
+
+            {% for i in l %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{i.COP_Name}}</td>
+                <td>{{i.Company}}</td>
+                <td>{{i.Project}}</td>
+                <td>{{i.OEM}}</td>
+                <td>{{i.Date_Created}}</td>
+                <td>{{i.Date_Modified}}</td>
+                <td>{{i.Remark}}</td>
+                <td>
+                   
+                    <center>
+                        <a href="/media/{{i.Upload_COP}}/" class='btn btn-primary btn-sm' target="_blank">DOWNLOAD PDF</a>
+                    </center>
+              
+                </td>
+                <td><a href="/boq-delete/{{i.id}}/">Delete</a></td>
+                <td>
+                    <a href="/updateCOP/{{i.id}}/">Edit</a>
+                </td>
+            </tr>
+
+            {%endfor%}
+
+        </table>
+    </div>
+                             
+
+
+
+
+
+
+	</div>
+
+
+</div>
+
+
+
+
+</div>
+<script>
+function submitform(){
+document.getElementById('filterform').submit()
+
+}
+
+
+
+</script>
+
+{% endblock %}

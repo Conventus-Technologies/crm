@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class='container'>
+    <div class='card col-6 mt-5 card-body mx-auto'>
+        <div class='alert alert-primary text-center display-7 text-uppercase'>DC UPLOAD</div>
+        <table class='ml-5'>
+            <form method='POST' enctype='multipart/form-data'>
+                {% csrf_token %}
+                {{form.as_table}}
+        </table>
+        <button type='submit' class='btn btn-primary btn-sm col-5 mx-auto mt-4'>UPLOAD REPORT</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

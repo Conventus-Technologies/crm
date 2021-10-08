@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+{% if user.is_authenticated %}
+<div class='card col-6 mt-5 card-body mx-auto' style="background-color: #866EC7;">
+<h1 class='col-8 mx-auto'> Hello {{user.username}}!</h1>
+<h2 class='col-8 mx-auto'> Login Successfully</h2>
+</div>
+
+{% endif %}
+{% endblock %}

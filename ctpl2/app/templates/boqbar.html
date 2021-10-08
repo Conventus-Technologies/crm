@@ -1,0 +1,214 @@
+{% load static %}
+{% block content %}
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Sidebar 02</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel='stylesheet' href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+
+<body>
+  
+  <!-- Sidebar -->
+ 
+  <div class="w3-sidebar w3-bar-block w3-animate-left w3-light-grey" style="display:none;z-index:5" id="mySidebar">
+    <button class="w3-bar-item w3-button w3-large" onclick="w3_close()">Close &times;</button>
+    <div class="w3-sidebar w3-bar-block w3-animate-left " style="width:160px;">
+    	
+      <button class="w3-button w3-block w3-left-align" onclick="myBoqFunc()">
+        BOQ <i class="fa fa-caret-down"></i>
+      </button>
+      
+      <div id="demoBoq" class="w3-hide w3-white w3-card">
+        <a href="/upload_Boq/" class="w3-bar-item w3-button">Create BOQ</a>
+        <a href="/boqlist/" class="w3-bar-item w3-button">View BOQ</a>
+      </div>
+    
+      <!-- <button class="w3-button w3-block w3-left-align" onclick="myProductFunc()">
+        Product <i class="fa fa-caret-down"></i>
+      </button>
+      <div id="demoProduct" class="w3-hide w3-white w3-card">
+        <a href="#" class="w3-bar-item w3-button">Create Product</a>
+        <a href="#" class="w3-bar-item w3-button">View Product</a>
+      </div>
+
+      <button class="w3-button w3-block w3-left-align" onclick="myRmaFunc()">
+        RMA <i class="fa fa-caret-down"></i>
+      </button>
+      <div id="demoRma" class="w3-hide w3-white w3-card">
+        <a href="#" class="w3-bar-item w3-button">Create RMA</a>
+        <a href="/#/" class="w3-bar-item w3-button">View RMA</a>
+        <a href="/#/" class="w3-bar-item w3-button">View RMA DEVICE</a>
+      </div>
+      
+      <button class="w3-button w3-block w3-left-align" onclick="myDcFunc()">
+        DC <i class="fa fa-caret-down"></i>
+      </button>
+      <div id="demoDc" class="w3-hide w3-white w3-card">
+        <a href="/upload_Dc/" class="w3-bar-item w3-button">Create DC</a>
+        <a href="/dclist/" class="w3-bar-item w3-button">View DC</a>
+      </div>
+
+      <button class="w3-button w3-block w3-left-align" onclick="myIrFunc()">
+        IR <i class="fa fa-caret-down"></i>
+      </button>
+      <div id="demoIr" class="w3-hide w3-white w3-card">
+        <a href="/upload_Ir/" class="w3-bar-item w3-button">Create IR</a>
+        <a href="/irlist/" class="w3-bar-item w3-button">View IR</a>
+      </div>
+ -->
+        <button class="w3-button w3-block w3-left-align" onclick="myCopFunc()">
+          COP <i class="fa fa-caret-down"></i>
+        </button>
+        <div id="demoCop" class="w3-hide w3-white w3-card">
+         <!--   <a href="/upload_Cop/" class="w3-bar-item w3-button">Create COP</a>-->
+          <a href="/coplist/" class="w3-bar-item w3-button">View COP</a>
+      </div>
+    </div>
+  </div>
+ 
+  <!-- Page Content -->
+  <div class="w3-overlay w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" id="myOverlay"></div>
+
+  <div>
+    <button class="w3-button w3-white w3-xxlarge" onclick="w3_open()">&#9776;</button>
+
+  </div>
+<!-- 
+  <h1>Hello {{user.username}}</h1> -->
+  
+  </ul>
+
+
+
+  </div>
+  </nav>
+
+  <!-- Page Content  -->
+
+  </div>
+  
+  
+  <script>
+    function w3_open() {
+      document.getElementById("mySidebar").style.display = "block";
+      document.getElementById("myOverlay").style.display = "block";
+    }
+
+    function w3_close() {
+      document.getElementById("mySidebar").style.display = "none";
+      document.getElementById("myOverlay").style.display = "none";
+    }
+  </script>
+
+<script>
+  function myCopFunc() {
+    var x = document.getElementById("demoCop");
+    if (x.className.indexOf("w3-show") == -1) {
+      x.className += " w3-show";
+      x.previousElementSibling.className += " w3-green";
+    }
+    else {
+      x.className = x.className.replace(" w3-show", "");
+      x.previousElementSibling.className =
+        x.previousElementSibling.className.replace(" w3-green", "");
+    }
+  }
+  </script>
+
+  <script>
+    function myBoqFunc() {
+      var x = document.getElementById("demoBoq");
+      if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+        x.previousElementSibling.className += " w3-green";
+      }
+      else {
+        x.className = x.className.replace(" w3-show", "");
+        x.previousElementSibling.className =
+          x.previousElementSibling.className.replace(" w3-green", "");
+      }
+    }
+
+    function myProductFunc() {
+      var x = document.getElementById("demoProduct");
+      if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+        x.previousElementSibling.className += " w3-green";
+      }
+      else {
+        x.className = x.className.replace(" w3-show", "");
+        x.previousElementSibling.className =
+          x.previousElementSibling.className.replace(" w3-green", "");
+      }
+    }
+
+    function myRmaFunc() {
+      var x = document.getElementById("demoRma");
+      if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+        x.previousElementSibling.className += " w3-green";
+      }
+      else {
+        x.className = x.className.replace(" w3-show", "");
+        x.previousElementSibling.className =
+          x.previousElementSibling.className.replace(" w3-green", "");
+      }
+    }
+
+    function myDcFunc() {
+      var x = document.getElementById("demoDc");
+      if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+        x.previousElementSibling.className += " w3-green";
+      }
+      else {
+        x.className = x.className.replace(" w3-show", "");
+        x.previousElementSibling.className =
+          x.previousElementSibling.className.replace(" w3-green", "");
+      }
+    }
+
+    function myIrFunc() {
+      var x = document.getElementById("demoIr");
+      if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+        x.previousElementSibling.className += " w3-green";
+      }
+      else {
+        x.className = x.className.replace(" w3-show", "");
+        x.previousElementSibling.className =
+          x.previousElementSibling.className.replace(" w3-green", "");
+      }
+    }
+  </script>
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/popper.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/main.js"></script>
+  <script src="{% static 'js/main.js' %}"></script>
+  <script src="{% static 'js/popper.js' %}"></script>
+  <script src="{% static 'js/jquery.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+<h3>
+
+</h3>
+
+
+</body>
+
+</html>
+
+{% endblock %}

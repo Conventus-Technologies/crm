@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block search %}
+<form class="d-flex" method='get' action='/searchboq/'>
+    <input class="form-control me-2" type="search" id='Query' name='Query' placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-light" type="submit">Search</a>
+</form>
+{% endblock %}
+
+{% block content %}
+<h1 class='col-lg-6 mx-auto  text-info mt-3 text-uppercase'>RMA Device List</h1>
+<div class="card-body">
+    <div class="table-responsive">
+        <table class="table table-hover table-bordered mx-auto" id="dataTable" width="100%" cellspacing="0">
+
+            <tr>
+                <th>Sr.No</th>
+                <th>OLD ID
+                    </br></br>
+                    <form class="d-flex" method='get' action='/RmaOldsearch/'>
+                    <input type='search' placeholder='Old Id...' name='Query4'>
+                    </form>
+                </th>
+                <th>Replaced Serial No.
+                    </br></br>
+                    <form class="d-flex" method='get' action='/RmaReplacesearch/'>
+                    <input type='search' placeholder='Replaced Serial No...' name='Query5'>
+                    </form>
+                </th>
+                <th>Remark</th>
+                
+                <th colspan="2">
+                    <center>Action</center>
+                </th>
+            </tr>
+
+            {% for i in x %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{i.Old_id}}</td>
+                <td>{{i.Sr_No}}</td>
+
+        
+                
+                
+                <td>{{i.Remark}}</td>
+              
+                <td><a href="/deletermadevice/{{i.id}}/">Delete</a></td>
+                <td>
+                    <a href="/updatermadevice/{{i.id}}/">Edit</a>
+                </td>
+            </tr>
+
+            {%endfor%}
+
+        </table>
+    </div>
+</div>
+{% endblock %}

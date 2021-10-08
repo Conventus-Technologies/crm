@@ -1,0 +1,138 @@
+{% extends 'base.html' %}
+{% block search %}
+<form class="d-flex" method='get' action='/searchboq/'>
+    <input class="form-control me-2" type="search" id='Query' name='Query' placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-light" type="submit">Search</a>
+</form>
+{% endblock %}
+
+{% block content %}
+<h1 class='col-lg-6 mx-auto  text-info mt-3 text-uppercase'>RMA List</h1>
+<div class="card-body">
+    <div class="table-responsive">
+        <table class="table  table-bordered mx-auto" id="dataTable" width="100%" cellspacing="0">
+
+            <tr>
+                <th>SR NO.</th>
+                <th>Unique ID</th>
+                <th>Call_Time_CMD</th>
+                <th>Call_Log_Date</th>
+                <th>RMA_Raised_Time</th>
+                <th>SR_Number
+                  </br></br>
+                  <form class="d-flex" method='get' action='/RmaSrsearch/'>
+                  <input type='search' placeholder='SR Number...' name='Query1'>
+                  </form>
+                </th>
+                <th>RMA_Number
+                  </br></br>
+                  <form class="d-flex" method='get' action='/RmaNumbersearch/'>
+                  <input type='search' placeholder='RMA Number...' name='Query2'>
+                  </form>
+                </th>
+                <th>Customer_name
+                  </br></br>
+                  <form class="d-flex" method='get' action='/RmaCustomersearch/'>
+                  <input type='search' placeholder='Customer Name...' name='Query3'>
+                  </form>
+                </th>
+                <th>Location_name</th>
+                <th>Contact_Name</th>
+                <th>Contact_Details</th>
+                <th>Faulty_Part_Type</th>
+                <th>Faulty_Part_make_and_Model</th>
+                <th>Faulty_Router_Serial</th>
+                <th>RMA_Make_and_Modem</th>
+                <th>RMA_Serial_Number</th>
+                <th>Fault_Logged_discription</th>
+                <th>Troubleshootings</th>
+                <th>RMA_Approved_Date</th>
+                <th>RMA_Received_CTPL</th>
+                <th>RMA_Delivered_Date</th>
+                <th>Faulty_Part_replacement_status_Pickup_Done_or_Not</th>
+                <th>Faulty_Part_pick_up_Date</th>
+                <th>Faulty_Part_pick_up_Time</th>
+                <th>Remark</th>
+                <th colspan="2">
+                    <center>Action</center>
+                </th>
+            </tr>
+
+            {% for i in q1 %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{i.id}}</td>
+                <td>{{i.Call_Time_CMD}}</td>
+                <td>{{i.Call_Log_Date}}</td>
+                <td>{{i.RMA_Raised_Time}}</td>
+                <td>{{i.SR_Number}}</td>
+                <td>{{i.RMA_Number}}</td>
+                <td>{{i.Customer_name}}</td>
+                <td>{{i.Location_name}}</td>
+                <td>{{i.Contact_Name}}</td>
+                <td>{{i.Contact_Details}}</td>
+                <td>{{i.Faulty_Part_Type}}</td>
+                <td>{{i.Faulty_Part_make_and_Model}}</td>
+                <td>{{i.Faulty_Router_Serial}}</td>
+                <td>{{i.RMA_Make_and_Modem}}</td>
+                <td>{{i.RMA_Serial_Number}}</td>
+                <td>{{i.Fault_Logged_discription}}</td>
+                <td>{{i.Troubleshootings}}</td>
+                <td>{{i.RMA_Approved_Date}}</td>
+                <td>{{i.RMA_Received_CTPL}}</td>
+                <td>{{i.RMA_Delivered_Date}}</td>
+                <th>{{i.Faulty_Part_replacement_status_Pickup_Done_or_Not}}</th>
+                <th>{{i.Faulty_Part_pick_up_Date}}</th>
+                <th>{{i.Faulty_Part_pick_up_Time}}</th>
+                <th>{{i.Remark}}</th>
+                <td><a href="/deleterma/{{i.id}}/">Delete</a></td>
+                <td>
+                    <a href="/updateRMA/{{i.id}}/">Edit</a></a>
+                </td>
+            </tr>
+
+            {%endfor%}
+        </br>
+
+    
+        </table>
+        </div>
+<!-- <div class='text-right'>
+        <nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+</div> -->
+
+                               <div>
+        <span>
+        {% if x.has_previous %}
+        <a href="?page={{x.previous_page_number}}">Previous</a>
+        {% endif %}
+        </span>
+        <span>
+  {{x.number}}</span>
+    <span>
+        {% if x.has_next %}
+        <a href="?page={{x.next_page_number}}">Next</a>
+        {% endif %}
+    </span>
+</div>
+
+    
+</div>
+     
+{% endblock %}
